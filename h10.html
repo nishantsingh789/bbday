@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Rshh 🎉</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background: linear-gradient(135deg,#ff6a88,#ff99ac);
+  color:#fff;
+  text-align:center;
+  overflow-x:hidden;
+}
+
+canvas{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+}
+
+.hero{
+  padding:80px 20px;
+  animation:fadeDown 2s ease;
+}
+
+.hero h1{
+  font-family:'Pacifico',cursive;
+  font-size:3.5rem;
+}
+
+.hero p{
+  margin-top:12px;
+  font-size:1.2rem;
+  opacity:0.95;
+}
+
+.button{
+  margin-top:35px;
+  padding:15px 40px;
+  border:none;
+  border-radius:50px;
+  background:#fff;
+  color:#ff4b7d;
+  font-size:1rem;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.button:hover{
+  transform:scale(1.1);
+  box-shadow:0 15px 30px rgba(0,0,0,0.2);
+}
+
+.card{
+  max-width:850px;
+  margin:60px auto;
+  padding:40px;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(10px);
+  border-radius:25px;
+  animation:fadeUp 2s ease;
+}
+
+.card h2{
+  font-family:'Pacifico',cursive;
+  font-size:2.4rem;
+  margin-bottom:20px;
+}
+
+.card p{
+  font-size:1.15rem;
+  line-height:1.9;
+}
+
+.gallery{
+  max-width:1100px;
+  margin:60px auto;
+  padding:0 20px;
+}
+
+.gallery h2{
+  font-family:'Pacifico',cursive;
+  font-size:2.5rem;
+  margin-bottom:30px;
+}
+
+.photos{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:22px;
+}
+
+.photos img{
+  width:100%;
+  border-radius:20px;
+  transition:0.4s;
+}
+
+.photos img:hover{
+  transform:scale(1.1) rotate(2deg);
+}
+
+footer{
+  padding:25px;
+  font-size:0.9rem;
+  opacity:0.85;
+}
+
+@keyframes fadeDown{
+  from{opacity:0;transform:translateY(-40px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(50px);}
+  to{opacity:1;transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="confetti"></canvas>
+<audio controls>
+  <source src="C:\Users\hp\Desktop\New folder\For A Reason (Official Video) Karan Aujla ｜ Tania  ｜ Ikky ｜ Latest Punjabi Songs 2025.mp3" type="audio/mpeg">
+</audio
+
+
+<section class="hero">
+  <h1>Happy Birthday Cutie 🎂</h1>
+  <p>28 December — The day the world became brighter 💖</p>
+  <button class="button" onclick="startCelebration()">Start the Surprise 🎉</button>
+</section>
+
+<section class="card">
+  <h2>For You 💕</h2>
+  <p>
+    Dear Rashmi,<br><br>
+    Today is all about celebrating you — your kindness, your smile,
+    and the warmth you bring into every life you touch.
+    Having you as my best friend is something I’ll always be grateful for.
+    May this year bring you happiness, success, and countless beautiful moments.
+    Never forget how special you are ✨<br><br>
+    Happy Birthday, Cutie 🎈💖
+  </p>
+</section>
+
+<section class="gallery">
+  <h2>Beautiful Memories 📸</h2>
+  <div class="photos">
+    <img src="C:\Users\hp\Desktop\New folder\IMG_20251227_103830_696.jpg" alt="Rashmi memory 1">
+    <img src="C:\Users\hp\Desktop\New folder\IMG_20251227_103834_480.jpg" alt="Rashmi memory 2">
+    <img src="C:\Users\hp\Desktop\New folder\IMG_20251227_104633_032.jpg" alt="Rashmi memory 3">
+    <img src="C:\Users\hp\Desktop\New folder\IMG_20251227_103831_952.jpg" alt="Rashmi memory 4">
+  </div>
+</section>
+
+<footer>
+  Made with ❤️ for my Bestie Rashmi
+</footer>
+
+<script>
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+window.addEventListener("resize",()=>{
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+});
+
+let confetti = [];
+for(let i=0;i<200;i++){
+  confetti.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*6+3,
+    s:Math.random()*3+2,
+    c:`hsl(${Math.random()*360},100%,60%)`
+  });
+}
+
+let started = false;
+
+function startCelebration(){
+  if(started) return;
+  started = true;
+  document.getElementById("bgm").play();
+  animateConfetti();
+}
+
+function animateConfetti(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  confetti.forEach(p=>{
+    ctx.beginPath();
+    ctx.fillStyle=p.c;
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+    p.y += p.s;
+    if(p.y > canvas.height){
+      p.y = -10;
+      p.x = Math.random()*canvas.width;
+    }
+  });
+  requestAnimationFrame(animateConfetti);
+}
+</script>
+
+</body>
+</html>
